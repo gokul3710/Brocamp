@@ -1,0 +1,425 @@
+/* FONT MONTSERRAT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    list-style-type: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+:root{
+    --transition: all 400ms ease;
+}
+
+body{
+    font-family: 'Poppins',sans-serif;
+    line-height: 1.7;
+}
+
+html{
+    scroll-behavior: smooth;
+    user-select: none;
+}
+/* 
+a{
+    color: white;
+} */
+
+h1,h2,h3,h4,h5,p{
+    color: #1d1d1f;
+}
+
+nav{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+    background: transparent;
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+nav a{
+    color: rgba(255, 255, 255, 0.616);
+    transition: var(--transition);
+}
+
+nav a:hover{
+    color: white;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nav-container{
+    width: 100%;
+    padding:0 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.7rem;
+    background: rgba(0, 0, 0, 0.8)
+}
+
+.nav-menu{
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-link a{
+    font-size: 0.7rem;
+    font-weight: 400;
+}
+
+/* ------------------------------====== - HOME - ====== ------------------------------ */
+
+main{
+    margin-top: 43.198px;
+}
+
+.banner{
+    width: 100%;
+    height: 2.8rem;
+    margin: 0 auto;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner p{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.banner p span,
+.container p span{
+    color: #06c;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.banner p span:hover,
+.container p span:hover{
+    text-decoration: underline;
+}
+
+section h1{
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: 600;
+    
+}
+
+.hero{
+    height: 100vh;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1{
+    padding-top: 2rem;
+}
+
+.hero h3{
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: 0;
+}
+
+.buy-link{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.buy-link a{
+    text-align: center;
+    font-size: 1.2rem;
+    color: #06c;
+}
+
+.buy-link a:hover{
+    text-decoration: underline;
+}
+
+.hero.h-1{
+    background-image: url(../images/image1.jpg);
+}
+
+.hero.h-2{
+    background-image: url(../images/image2.jpg);
+}
+
+.hero.h-2 h1,
+.hero.h-2 H3{
+    color: white;
+}
+
+.hero.h-3{
+    background-image: url(../images/image3.jpg);
+    padding-top: 10%;
+}
+
+.hero.h-3 h1,
+.hero.h-3 h3,
+.hero.h-3 .buy-link{
+    padding-left: 30%;
+    line-height: 1.3;
+}
+
+.products-container{
+    width: 98%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 0.7rem;
+}
+
+.product{
+    background-color: white;
+    color: white;
+    height: 35rem;
+    text-align: center;
+    padding: 3rem;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.product h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+}
+
+.product h3{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+    line-height: 1.5;
+}
+
+.product .buy-link{
+    margin-top: 0.5rem;
+}
+
+.product .buy-link a{
+    font-size: 1rem;
+}
+
+.p-1{
+    background-image: url(../images/image4.jpg);
+}
+
+.p-2{
+    background-image: url(../images/image5.jpg);
+}
+
+.p-2 h3,
+.p-3 h3{
+    color: black;
+}
+
+
+.p-3{
+    background-image: url(../images/image6.jpg);
+}
+
+
+.p-4{
+    background-image: url(../images/image7.jpg);
+}
+
+
+.p-5{
+    background-image: url(../images/image8.jpg);
+}
+
+.p-6 img{
+    padding: 6rem 3rem 0 3rem ;
+    width: 100%;
+    margin: auto;
+}
+
+
+.p-1 h2{
+    line-height: 1;
+}
+
+.p-1 .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p-1 .icon img{
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+}
+
+.p-2 img{
+    height: 2rem;
+}
+
+/* .p-3{
+    background-color: white;
+} */
+
+.p-3 img,
+.p-4 img{
+    width: 10rem;
+}
+
+.swipper{
+    margin-top: 0.8rem;
+    position: relative;
+}
+.thumbnail{
+    width: 80%;
+    margin: 0 auto;
+    position: relative; 
+}
+
+.thumbnail img{
+    width: 100%;
+}
+
+.inner{
+    position: absolute;
+    bottom: 0;
+    padding: 3rem 5rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.btn{
+    background-color: white;
+    padding: 0.7rem 1.4rem;
+    border-radius: 2rem;
+    border: 2px solid transparent;
+    font-size: 0.8rem;
+    color: black;
+    font-weight: 600;
+}
+
+.inner p{
+    font-size: 1.1rem;
+    font-size: 400;
+    color: white;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.inner p span{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+}
+
+.outer{
+    padding-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    position: relative;
+}
+
+.circle{
+    height: 0.5rem;
+    aspect-ratio: 1/1;
+    background-color: rgba(0,0,0,0.16);
+    border-radius: 50%;
+}
+
+.circle.active{
+    background-color: rgba(0,0,0,0.56);
+}
+
+.play{
+    position: absolute;
+    right: 0;
+}
+
+footer{
+    margin-top: 1rem;
+    background: #f5f5f7;
+}
+
+.footnotes{
+    padding-top: 0.5rem;
+}
+
+footer p{
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 1rem;
+}
+
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.footer-container h5{
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.permalink .link a{
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.7rem;
+    font-weight: 500; 
+}
+
+.permalink .link a:hover,
+.copyright ul li a:hover{
+    text-decoration: underline;
+}
+
+.copyright{
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copyright p{
+    margin: 0;
+}
+
+.copyright ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.copyright ul li a{
+    margin: 0 0.5rem;
+    padding-left: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.7rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.copyright ul li a.first{
+    border-left: 0 none !important;
+}
+
+
