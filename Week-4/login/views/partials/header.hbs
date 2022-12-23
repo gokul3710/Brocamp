@@ -1,0 +1,40 @@
+<nav>
+  <div class="nav-container">
+    <div class="nav d-md-grid align-items-center">
+      <a class="nav-logo" href="#"><img
+          src="https://raw.githubusercontent.com/gokul3710/Starbucks/master/assets/images/icon.png" alt=""></a>
+      {{#if user}}
+      <div class="nav-links d-md-flex justify-content-between p-3">
+
+        <ul class="nav-menu d-flex m-0 p-0 position-relative font-weight-700">
+          <li class="nav-link">
+            <a class="text-dark" href="#">MENU</a>
+          </li>
+          <li class="nav-link">
+            <a class="text-dark" href="#">REWARDS</a>
+          </li>
+          <li class="nav-link">
+            <a class="text-dark" href="#">GIFT CARDS</a>
+          </li>
+        </ul>
+
+        {{#if user}}
+        <div class="buttons d-flex align-items-center">
+          <a class="text-dark"><i class="fa-solid fa-door-open"></i>Hello, {{user.name}}</a>
+          <a class="btn-primary" href="\logout">Sign out</a>
+        </div>
+        {{else}}
+        <div class="buttons">
+          <a class="btn-primary" href="\login">Sign in</a>
+          <a class="btn-secondary" href="\login">Join now</a>
+        </div>
+        {{/if}}
+      </div>
+      <h4 class="text-dark nav-open m-0" style="font-weight: 600;">Hello, {{user.name}}
+        <a href="/logout">
+          <i class="fa-solid text-danger fa-arrow-right-from-bracket fa-sm"></i>
+        </a></h4>
+      {{/if}}
+    </div>
+  </div>
+</nav>

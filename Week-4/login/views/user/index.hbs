@@ -1,0 +1,33 @@
+<section>
+    {{#each data}}
+        <div class="section-container" style="background-color: {{this.backgroundColor1}};">
+            <div style="background-color: {{this.backgroundColor1}};">
+                <div class="image">
+                    <img src="{{this.img}}" alt="">
+                </div>
+            </div>
+            <div style="background-color: {{this.backgroundColor2}};display:grid;order: {{this.order}}">
+                <div class="text">
+                    <h1>
+                       {{this.h1}}
+                    </h1>
+                    <h2>
+                        {{this.p}}
+                    </h2>
+                    <a class="btn-secondary text-btn" href="">{{this.button}}</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+        
+        <div class="notice">
+            <p>
+                *Excludes taxes and gratuities. At participating stores. Some restrictions apply. 150 Stars
+                deposited<br>
+                after first qualifying Starbucks purchase. Flights purchased close to departure may not earn double<br>
+                Stars. Stars may not be earned on purchases of alcohol, Starbucks Cards<br>
+                and Starbucks Card reloads. For details, visit <span style="text-decoration: underline;"><a
+                        href="">deltastarbucks.com/terms</a></span> .
+            </p>
+        </div>
+    </section>
