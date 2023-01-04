@@ -1,0 +1,38 @@
+<!-- Header Section -->
+<section id="header">
+    {{#if admin}}
+    <a href="" class="logo">Admin</a>
+    <div>
+        <ul id="navbar">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Users</a></li>
+            <li><a href="/blog">Products</a></li>
+        </ul>
+        <div id="mobile">
+            <i class="fa-solid fa-bars" id="bar"></i>
+        </div>
+    </div>
+    {{else}}
+    <a href="#"><img src="./images/logo.png" class="logo" alt="Logo Image"></a>
+    <div>
+        <ul id="navbar">
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/cart"><i class="fa-solid fa-bag-shopping"></i></a></li>
+            {{#if admin}}
+            <li><a href="/edit-user?id={{user._id}}"><img src="./images/people/2.png" alt="" srcset="" style="width: 2rem;height:2rem;"></a></li>
+            {{#else}}
+            <li><a href="/login"><img src="./images/people/dummy.png" alt="" style="width: 2rem;height:2rem;border-radius:50%;"></a></li>
+            {{/if}}
+            <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+        </ul>
+        <div id="mobile">
+            <a href="/cart"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i class="fa-solid fa-bars" id="bar"></i>
+        </div>
+    </div>
+    {{/if}}
+</section>

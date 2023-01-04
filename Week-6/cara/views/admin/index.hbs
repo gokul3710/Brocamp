@@ -1,0 +1,27 @@
+
+<section id="cart" class="section-p1">
+    <table>
+      <thead>
+        <tr>
+          <td>Remove</td>
+          <td></td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Edit</td>
+        </tr>
+      </thead>
+      <tbody>
+    {{#each users}}
+        <tr>
+          <td><a href="#"><i class="fa-solid fa-circle-minus"></i></a></td>
+          <td><img src="./images/people/2.png" alt="" srcset="" style="width: 3rem;height:3rem;"></td>
+          <td>{{this.firstName}}</td>
+          <td>{{this.lastName}}</td>
+          <td>{{this.email}}</td>
+          <td><a href="/edit-user?id={{this._id}}"><i class="fa-solid fa-pen" style="color: rgb(255, 89, 0);font-size: 18px;"></i></a></td>
+        </tr>
+    {{/each}}
+      </tbody>
+    </table>
+  </section>
