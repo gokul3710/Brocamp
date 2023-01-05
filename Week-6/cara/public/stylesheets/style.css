@@ -1125,13 +1125,15 @@ marquee{
   margin-bottom: 5rem;
 }
 
-.edit-user{
+.edit-user,
+.add-product{
   padding: 2rem 10rem;
   text-align: center;
   margin-bottom: 5rem;
 }
 
-.edit-user h2{
+.edit-user h2,
+.add-product h2{
   font-size: 2.5rem;
   padding-bottom: 2rem;
 }
@@ -1148,7 +1150,8 @@ marquee{
 
 .login-container form,
 .signup-container form,
-.user-edit-container form{
+.user-edit-container form,
+.add-product-container form{
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -1168,7 +1171,8 @@ marquee{
 
 .login-container form input,
 .edit-user-container form input,
-.signup-container form input{
+.signup-container form input,
+.add-product-container form input{
   width: 100%;
   height: 3rem;
   padding: 1rem;
@@ -1180,14 +1184,16 @@ marquee{
 }
 
 .login-container form input:is(:active, :focus),
-.edit-user-container form input:is(:active, :focus){
+.edit-user-container form input:is(:active, :focus),
+.add-product-container form input:is(:active, :focus){
   background-color: #e3e6f36b;
   border: none;
   outline: 1.5px solid #088178;
 }
 
 .contact-form .btn,
-.edit-user-form .btn{
+.edit-user-form .btn,
+.add-product-form .btn{
   width: max-content;
   margin-top: 0.5rem;
   cursor: pointer;
@@ -1229,6 +1235,60 @@ marquee{
 .error-close i{
   color: white;
 }
+
+
+.search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e3e6f3;
+  height: 4rem;
+  width: 100%;
+  margin-bottom: 3rem;
+  padding: 0 15rem;
+  gap: 1rem;
+  border-radius: 10px;
+}
+
+.search .input{
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ background-color: white;
+ border-radius: 10px;
+ align-items: center;
+ padding: 0 1rem;
+}
+
+.search .input:hover,
+.search .input:hover input{
+ background-color: #f4f5f8;
+}
+
+.search .input i{
+  margin-right: 1rem;
+}
+.search .input input{
+  width: 100%;
+  height: 2rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+.search .input input:is(:active,:focus){
+  border: none;
+  outline: none;
+  background-color: #f4f5f8;
+}
+.search-btn{
+  background: #000;
+  border-radius: 10px;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  color: white;
+  font-size: 1.1rem;
+}
+
 
 
 

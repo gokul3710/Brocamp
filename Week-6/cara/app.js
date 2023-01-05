@@ -11,6 +11,7 @@ var hbs = require('express-handlebars')
 var app = express();
 var db = require('./config/connection')
 var session= require('express-session')
+var fileUpload = require('express-fileupload')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +27,7 @@ app.use((req,res,next)=>{
   res.header('Cache-Control','no-cache,private,no-Store,must-revalidate,max-scale=0,post-check=0,pre-check=0');
   next();
 })
+app.use(fileUpload())
 
 db.connect((err)=>{
   if(err) console.log("Connection Error");
@@ -33,7 +35,7 @@ db.connect((err)=>{
 })
 
 app.use('/', userRouter);
-app.use('/admin', adminRouter);
+app.use('/', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

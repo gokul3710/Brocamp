@@ -2,11 +2,11 @@ var express = require("express");
 var router = express.Router();
 var userHelpers = require("../helpers/userHelpers");
 const { response } = require("express");
-
+const productHelpers = require("../helpers/productHelpers");
 
 
 const userLogin = (req,res,next)=>{
-  if(req.session.userLoggedIn){
+  if(req.session.userLoggedIn || req.session.adminLogin){
     next()
   }else{
     res.redirect('/login')
@@ -14,10 +14,11 @@ const userLogin = (req,res,next)=>{
 }
 
 
-
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("user/index");
+  productHelpers.getAllProducts().then((products)=>{
+    res.render("user/index",{user:req.session.user,products,admin:req.session.adminLogin});
+  })
 });
 
 router.get("/signup", function (req, res, next) {
@@ -46,13 +47,11 @@ router.post("/signup", function (req, res, next) {
       req.session.userLoginErr = false
       res.redirect('/login')
     }
-    
   });
 });
 
 router.post("/login", function (req, res, next) {
   userHelpers.doLogin(req.body).then((response) => {
-    console.log(response);
     if (response.status) {
       req.session.userLoggedIn = true;
       req.session.user = response.user;
@@ -71,7 +70,6 @@ router.get("/logout", function (req, res, next) {
   req.session.user = null;
   res.redirect('/')
 });
-
 
 
 
@@ -96,24 +94,46 @@ router.get("/contact", function (req, res, next) {
 });
 
 router.get("/product", userLogin, function (req, res, next) {
-  res.render("user/product");
+  if(req.query.productId){
+    productHelpers.getProduct(req.query.productId).then((product)=>{
+      res.render("user/product",{product})
+    })
+  }else{
+    res.redirect('/')
+  }
 });
 
 router.get('/edit-user',userLogin,(req,res,next)=>{
-  console.log("one");
-  userHelpers.getUser(req.query.id).then((user)=>{
-    console.log("three");
-    console.log(user);
-    res.render('user/edit-user',{user})
-  })
+  if(req.query.id){
+    userHelpers.getUser(req.query.id).then((user)=>{
+      res.render('user/edit-user',{user})
+    })
+  }else{
+    res.redirect('/')
+  }
 })
 
 router.post('/edit-user',(req,res,next)=>{
   userHelpers.editUser(req.body).then((response)=>{
-    req.session.user = req.body
-    res.redirect('/admin')
+    if(req.session.adminLogin){
+      res.redirect('/admin')
+    }else{
+      res.redirect('/')
+    }
   })
 })
 
+
+router.get('/delete-user',userLogin,(req,res)=>{
+  if(req.query.id){
+    userHelpers.deleteUser(req.query.id).then((response)=>{
+      if(req.session.adminLogin){
+        res.redirect('/admin')
+      }else{
+        res.redirect('/')
+      }
+    })
+  }
+})
 
 module.exports = router;

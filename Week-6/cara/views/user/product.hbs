@@ -3,32 +3,32 @@
     
     <!-- Single Image  -->
     <div class="single-pro-image">
-      <img src="./images/products/f1.jpg" alt="" id="mainImg">
-      <div class="small-img-group">
+      <img src="./product-images/{{product._id}}.png" alt="" id="mainImg">
+      {{!-- <div class="small-img-group">
         <div class="small-img-col">
-          <img src="./images/products/f1.jpg" alt="" class="small-img">
+          <img src="./product-images/{{product._id}}.png" alt="" class="small-img">
         </div>
         <div class="small-img-col">
-          <img src="./images/products/f2.jpg" alt="" class="small-img">
+          <img src="./product-images/{{product._id}}.png" alt="" class="small-img">
         </div>
         <div class="small-img-col">
-          <img src="./images/products/f3.jpg" alt="" class="small-img">
+          <img src="./product-images/{{product._id}}.png" alt="" class="small-img">
         </div>
         <div class="small-img-col">
-          <img src="./images/products/f4.jpg" alt="" class="small-img">
+          <img src="./product-images/{{product._id}}.png" alt="" class="small-img">
         </div>
-      </div>
+      </div> --}}
     </div>
 
     <!-- Product Details -->
     <div class="single-pro-details">
-      <h6>Home / T-Shirt</h6>
-      <h4>Men's Fashion T-Shirts Collections</h4>
-      <h2>$78.00</h2>
+      <h6>{{product.company}}</h6>
+      <h4>{{product.name}}</h4>
+      <h2>${{product.cPrice}}</h2>
       <select>
-        <option>Select Size</option>
+        <option selected>Select Size</option>
         <option>XXL</option>
-        <option selected>XL</option>
+        <option >XL</option>
         <option>Large</option>
         <option>Meduim</option>
         <option>Small</option>
@@ -37,8 +37,16 @@
       <button class="normal">Add To Cart</button>
       <h4>Product Details</h4>
       <span>
-        Portray your product in a way that sounds appealing to the customer and will help them decide if they should buy it. Use descriptive, compelling, and creative words to write about the product's features and benefits. Also, tell a compelling story about why the t-shirt is worth purchasing
-        Shirting fabric is a kind of primarily cotton or cotton blend cloth used to make shirts. These fabrics should be breathable, durable, pleasant to the touch, and comfortable to wear all year round. That is why high thread count and yarn dyed structure are the essential features of shirting fabrics.
+        <ul>
+          <li>Commodity : {{product.commodity}} Watches</li>
+          <li>Made of : {{product.material}}</li>
+          <li>Width : {{product.dWidth}} mm</li>
+          <li>Height : {{product.dHeight}} mm</li>
+          <li>Clean the dial with a cotton cloth</li>
+          <li>Package contains : 1 wrist watch</li>
+          <li>Water-resistant</li>
+          <li>2-years warranty on the movement and 12 months warranty on the battery from the date of purchase.</li>
+        </ul>
       </span>
     </div>
 

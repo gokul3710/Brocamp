@@ -1,0 +1,36 @@
+<section id="cart" class="section-p1">
+  <form action="/product-search" method="get">
+    <div class="search">
+      <div class="input">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="productSearchInput">
+      </div>
+      <button type="submit" class="search-btn product-search">Search</button>
+    </div>
+  </form>
+  <table>
+    <thead>
+      <tr>
+        <td>Remove</td>
+        <td>Company</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Image</td>
+        <td>Edit</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+      <tr>
+        <td><a href="#"><i class="fa-solid fa-circle-minus"></i></a></td>
+        <td>{{this.company}}</td>
+        <td>{{this.name}}</td>
+        <td>₹{{this.cPrice}}</td>
+        <td><img src="/product-images/{{this._id}}.png" alt="" srcset="" style="width: 4rem;height:auto:"></td>
+        <td><a href="/edit-user?id={{this._id}}"><i class="fa-solid fa-pen"
+              style="color: rgb(255, 89, 0);font-size: 18px;"></i></a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

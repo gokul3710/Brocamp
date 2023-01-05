@@ -2,6 +2,7 @@ var db = require("../config/connection");
 var collection = require("../config/collections");
 const bcrypt = require("bcrypt");
 const { response } = require("express");
+const collections = require("../config/collections");
 const  ObjectID  = require('mongodb').ObjectID
 
 module.exports = {
@@ -35,7 +36,6 @@ module.exports = {
             }
         })
       }else{
-        console.log("Logged in failed3");
         resolve({status : false,loginErr: "Email is not registered"})
       }
     });
@@ -48,17 +48,13 @@ module.exports = {
   },
   getUser: (userId)=>{
     return new Promise ((resolve,reject)=>{
-      console.log(userId);
       db.get().collection(collection.USER_COLLECTION).findOne({_id:ObjectID(userId)}).then((user)=>{
-        console.log("two");
-        console.log(user);
         resolve(user)
       })
     })
   },
   editUser: (user)=>{
     return new Promise ((resolve,reject)=>{
-      console.log(user);
       db.get().collection(collection.USER_COLLECTION).updateOne({_id:ObjectID(user.userId)},{
         $set:{
           firstName:user.firstName,
@@ -76,5 +72,18 @@ module.exports = {
         resolve()
       })
     })
-  }
+  },
+  searchUser: (text)=>{
+    return new Promise(async(resolve,reject)=>{
+      let results = db.get().collection(collections.USER_COLLECTION).find({$text: {$search : text}}).toArray()
+      resolve(results)
+    })
+  },
+  deleteUser:(userId)=>{
+    return new Promise((resolve,reject) =>{
+        db.get().collection(collection.USER_COLLECTION).deleteOne({_id:ObjectID(userId)}).then((response)=>{
+            resolve(response)
+        })
+    }) 
+  },
 };
