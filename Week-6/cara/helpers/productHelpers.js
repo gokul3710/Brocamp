@@ -57,6 +57,12 @@ module.exports= {
                 resolve()
             })
         })
+    },
+    getCategoryProducts:(category)=>{
+        return new Promise(async(resolve,reject)=>{
+            let categoryProducts = await db.get().collection(collections.PRODUCT_COLLECTION).find({company:category}).toArray()
+            resolve(categoryProducts)
+        })
     }
 
 

@@ -1,7 +1,6 @@
 var express = require('express');
 const userHelpers = require('../helpers/userHelpers');
 const productHelpers = require('../helpers/productHelpers');
-const { response } = require('express');
 var router = express.Router();
 
 const adminLogin =(req,res,next)=>{
@@ -37,6 +36,8 @@ router.post('/admin-login', function(req, res, next) {
   let validate = validateAdmin(req.body)
   if(validate[0]){
     req.session.adminLogin = true;
+    req.session.userLoggedIn = false;
+    req.session.user = null
     res.redirect('/admin')
   }else{
     req.session.adminLoginErr = validate[1]
@@ -46,7 +47,7 @@ router.post('/admin-login', function(req, res, next) {
 
 router.get('/admin-logout',(req,res,next)=>{
   req.session.adminLogin = null
-  res.redirect('/admin-login')
+  res.redirect('/')
 })
 
 router.get('/add-product',adminLogin,(req,res,next)=>{
@@ -54,6 +55,7 @@ router.get('/add-product',adminLogin,(req,res,next)=>{
 })
 
 router.post('/add-product',(req,res,next)=>{
+  console.log(req)
   productHelpers.addProduct(req.body).then((id)=>{
     let image = req.files.image
     image.mv('./public/product-images/'+id+'.png',(err,done)=>{
@@ -107,5 +109,7 @@ router.get('/delete-product',adminLogin,(req,res,next)=>{
     })
   }
 })
+
+
 
 module.exports = router;

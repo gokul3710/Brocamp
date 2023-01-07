@@ -60,6 +60,7 @@ module.exports = {
           lastName:user.lastName,
           email:user.email,
           phone:user.phone,
+          profileImage: true,
           address:{
             houseName:user.address,
             city:user.city,

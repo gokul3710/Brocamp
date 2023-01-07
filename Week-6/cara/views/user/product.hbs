@@ -54,69 +54,29 @@
 
   <!-- Featured Products Section -->
   <section id="product1" class="section-p1">
-      <h2>Featured Products</h2>
+      <h2>More Products</h2>
       <p>New Summer Collection Arrivals</p>
       <div class="pro-container">
-        <div class="pro">
-          <img src="./images/products/n1.jpg" alt="">
-          <div class="des">
-            <span>Zara</span>
-            <h5>Basic Light-blue Shirt</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$76</h4>
-          </div>
-          <a href="#"><i class="fa-solid fa-cart-plus cart"></i></a>
+        {{#each products}}
+         <div class="pro">
+            <a href="/product?productId={{this._id}}">
+                <img src="./product-images/{{this._id}}.png" alt="">
+                <div class="des">
+                    <span>{{this.company}}</span>
+                    <h5>{{this.name}}</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>{{this.cPrice}}</h4>
+                </div>
+            </a>
+            <a href=""><i class="fa-solid fa-cart-plus cart"></i></a>
         </div>
-        <div class="pro">
-          <img src="./images/products/n2.jpg" alt="">
-          <div class="des">
-            <span>H&M</span>
-            <h5>Caroo Nice Shirt</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$76</h4>
-          </div>
-          <a href="#"><i class="fa-solid fa-cart-plus cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="./images/products/n3.jpg" alt="">
-          <div class="des">
-            <span>Zara</span>
-            <h5>Snow White Shirt</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$90</h4>
-          </div>
-          <a href="#"><i class="fa-solid fa-cart-plus cart"></i></a>
-        </div>
-        <div class="pro">
-          <img src="./images/products/n4.jpg" alt="">
-          <div class="des">
-            <span>Zain</span>
-            <h5>Battern Shirt</h5>
-            <div class="star">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <h4>$50</h4>
-          </div>
-          <a href="#"><i class="fa-solid fa-cart-plus cart"></i></a>
-        </div>
+        {{/each}}
       </div>
   </section>
 

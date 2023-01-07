@@ -99,7 +99,10 @@ router.get("/contact", function (req, res, next) {
 router.get("/product", userLogin, function (req, res, next) {
   if(req.query.productId){
     productHelpers.getProduct(req.query.productId).then((product)=>{
-      res.render("user/product",{product})
+      productHelpers.getCategoryProducts(product.company).then((products)=>{
+        console.log(products);
+        res.render("user/product",{product,products})
+      })
     })
   }else{
     res.redirect('/')
@@ -118,11 +121,20 @@ router.get('/edit-user',userLogin,(req,res,next)=>{
 
 router.post('/edit-user',(req,res,next)=>{
   userHelpers.editUser(req.body).then((response)=>{
-    if(req.session.adminLogin){
-      res.redirect('/admin')
-    }else{
-      res.redirect('/')
-    }
+    console.log(req.files);
+    let image = req.files.image
+    image.mv('./public/images/user-images/'+req.body.userId+'.png',(err,done)=>{
+      if(!err){
+        if(req.session.adminLogin){
+          res.redirect('/admin')
+        }else{
+          res.redirect('/')
+        }
+      }else{
+        console.log(err);
+      }
+    })
+  
   })
 })
 

@@ -16,7 +16,11 @@
   <!-- Header Section -->
   {{>header}}
   {{{body}}}
+  {{#if admin}}
+  {{else}}
   {{>footer}}
+
+  {{/if}}
   <script src="./javascripts/script.js"></script>
 </body>
 </html>
