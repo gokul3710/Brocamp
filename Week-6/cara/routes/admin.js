@@ -1,6 +1,7 @@
 var express = require('express');
 const userHelpers = require('../helpers/userHelpers');
 const productHelpers = require('../helpers/productHelpers');
+const { response } = require('express');
 var router = express.Router();
 
 const adminLogin =(req,res,next)=>{
@@ -79,8 +80,32 @@ router.get('/user-search',adminLogin,(req,res,next)=>{
 })
 
 router.get('/product-search',adminLogin,(req,res,next)=>{
-  console.log(req.body);
+  console.log(req.query.text);
+  productHelpers.searchProduct(req.query.text).then((products)=>{
+    res.render('admin/products',{admin:req.session.adminLogin,products})
+  })
 })
 
+router.get('/edit-product',adminLogin,(req,res,next)=>{
+  if(req.query.id){
+    productHelpers.getProduct(req.query.id).then((product)=>{
+      res.render('admin/edit-product',{product})
+    })
+  }
+})
+
+router.post('/edit-product',(req,res,next)=>{
+  productHelpers.editProduct(req.body).then((response)=>{
+    res.redirect('/products')
+  })
+})
+
+router.get('/delete-product',adminLogin,(req,res,next)=>{
+  if(req.query.id){
+    productHelpers.deleteProduct(req.query.id).then((response)=>{
+      res.redirect('/products')
+    })
+  }
+})
 
 module.exports = router;

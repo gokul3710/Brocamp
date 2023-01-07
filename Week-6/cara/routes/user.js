@@ -1,9 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var userHelpers = require("../helpers/userHelpers");
-const { response } = require("express");
 const productHelpers = require("../helpers/productHelpers");
-
 
 const userLogin = (req,res,next)=>{
   if(req.session.userLoggedIn || req.session.adminLogin){
@@ -12,7 +10,6 @@ const userLogin = (req,res,next)=>{
     res.redirect('/login')
   }
 }
-
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -82,10 +79,16 @@ router.get("/cart",userLogin, function (req, res, next) {
 });
 
 router.get("/blog", function (req, res, next) {
+  productHelpers.getCount("company").then((data)=>{
+    console.log(data);
+  })
   res.render("user/blog");
 });
 
 router.get("/about", function (req, res, next) {
+  productHelpers.startsWith().then((data)=>{
+    console.log(data);
+  })
   res.render("user/about");
 });
 
