@@ -71,12 +71,15 @@ router.get("/logout", function (req, res, next) {
 
 
 router.get("/shop",userLogin, function (req, res, next) {
-  res.render("user/shop",{user:req.session.user});
+  productHelpers.getAllProducts().then((products)=>{
+    res.render("user/shop",{user:req.session.user,products});
+  })
 });
 
-router.get("/cart",userLogin, function (req, res, next) {
+router.get("/cart",userLogin,  async(req, res, next)=> {
+  let cart =await userHelpers.getTotal(req.session.user._id)
   userHelpers.getCartProducts(req.session.user._id).then((products)=>{
-    res.render("user/cart",{user:req.session.user,products});
+    res.render("user/cart",{user:req.session.user,products,cart});
   })
 });
 
