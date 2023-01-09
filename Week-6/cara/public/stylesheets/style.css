@@ -10,6 +10,18 @@
   scroll-behavior: smooth;
 }
 
+
+::-webkit-scrollbar{
+  width: 0.5rem;
+  background: white;
+}
+
+::-webkit-scrollbar-thumb{
+  width: 100%;
+  background: #a1a9c9;
+  border-radius: 0.25rem;
+}
+
 body {
   user-select: none;
 }
@@ -1029,7 +1041,8 @@ marquee {
 
 #cart table td:nth-child(4),
 #cart table td:nth-child(5),
-#cart table td:nth-child(6) {
+#cart table td:nth-child(6),
+#cart table td:nth-child(7) {
   width: 150px;
   text-align: center;
 }
@@ -1253,7 +1266,7 @@ marquee {
   background-color: #e3e6f3;
   height: 4rem;
   width: 100%;
-  margin-bottom: 3rem;
+  margin: 2rem 0;
   padding: 0 15rem;
   gap: 1rem;
   border-radius: 10px;
@@ -1305,18 +1318,27 @@ marquee {
 
 /*  Admin Styles */
 
+
+
 .aside {
   position: fixed;
   top: 0;
   background-color: #e3e6f3;
   height: 100vh;
+  width: 18%;
+  /* text-align: center; */
+  z-index: 1;
+}
+
+.top .logo{
+  padding-left: 4rem;
 }
 
 .top {
   margin-top: 1rem;
   display: grid;
   /* place-items: center; */
-  padding: 20px 80px;
+  padding: 20px 0;
 }
 
 
@@ -1328,12 +1350,16 @@ marquee {
 }
 
 .sidebar a {
-  padding: 1.5rem;
+  padding: 1.5rem 0;
+  padding-left: 4rem;
+  transition: all 300ms ease;
+}
+
+.sidebar a:hover{
+  background-color: rgba(0, 0, 255, 0.372);
 }
 
 .sidebar a:last-child {
-  background-color: rgba(0, 0, 255, 0.372);
-  bottom: 3rem;
 }
 
 /* .sidebar a:nth-child(2) >* {
@@ -1349,15 +1375,16 @@ marquee {
   left: 0;
 } */
 .right {
-  margin-left: 20%;
+  margin-left: 18%;
 }
 
 .right-container {
-  width: 85%;
+  width: 90%;
   margin: 3rem auto;
 }
 
-table {
+.users table,
+.products table {
   width: auto !important;
 
 }
@@ -1370,6 +1397,10 @@ table thead {
 
 table td {
   border-bottom: 1px solid #eee;
+}
+
+.products{
+  overflow: hidden;
 }
 
 

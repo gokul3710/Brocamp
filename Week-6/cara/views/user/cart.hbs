@@ -18,36 +18,30 @@
         </tr>
       </thead>
       <tbody>
+        {{#each products}}
         <tr>
           <td><a href="#"><i class="fa-solid fa-circle-minus"></i></a></td>
-          <td><img src="./images/products/f1.jpg" alt=""></td>
-          <td>Astronut Shirt</td>
-          <td>$78</td>
-          <td><input type="number" name="" id="" value="1" min="1"></td>
-          <td>$78</td>
+          <td><img src="./product-images/{{this.item}}.png" alt=""></td>
+          <td><h5>{{this.product.company}} {{this.product.name}}</h5></td>
+          <td>{{this.product.cPrice}}</td>
+          <td>
+            <a>
+              <i class="fa-solid fa-circle-minus"></i>
+            </a>
+            <input type="number" name="" id="" value="1" min="1" style="border: none;text-align:center;">
+            <a href="">
+              <i class="fa-solid fa-circle-plus"></i>
+            </a>
+          </td>
+          <td>{{this.product.cPrice}}</td>
         </tr>
-        <tr>
-          <td><a href="#"><i class="fa-solid fa-circle-minus"></i></a></td>
-          <td><img src="./images/products/f2.jpg" alt=""></td>
-          <td>Colorful Shirt</td>
-          <td>$70</td>
-          <td><input type="number" name="" id="" value="3" min="1"></td>
-          <td>$210</td>
-        </tr>
-        <tr>
-          <td><a href="#"><i class="fa-solid fa-circle-minus"></i></a></td>
-          <td><img src="./images/products/f3.jpg" alt=""></td>
-          <td>Tree Leaves Shirt</td>
-          <td>$65</td>
-          <td><input type="number" name="" id="" value="2" min="1"></td>
-          <td>$130</td>
-        </tr>
+        {{/each}}
       </tbody>
     </table>
   </section>
 
   <!-- Cart Add Section -->
-  <section id="cart-add" class="section-p1">
+  {{!-- <section id="cart-add" class="section-p1">
     <div id="coupon">
       <h3>Apply Coupon</h3>
       <div>
@@ -73,4 +67,4 @@
       </table>
       <button class="normal">Proceed To Checkout</button>
     </div>
-  </section>
+  </section> --}}

@@ -86,4 +86,80 @@ module.exports = {
         })
     }) 
   },
+  addToCart:(productId,userId)=>{
+    productObj={
+        item:ObjectID(productId),
+        quantity:1
+    }
+    return new Promise(async(resolve,reject)=>{
+        let userCart = await db.get().collection(collection.CART_COLLECTION).findOne({user:ObjectID(userId)})
+        if(userCart){
+            let productExist= userCart.products.findIndex(product=> product.item==productId)
+            if(productExist!=-1){
+                db.get().collection(collection.CART_COLLECTION)
+                .updateOne({user:ObjectID(userId),'products.item':ObjectID(productId)},
+                {
+                    $inc:{'products.$.quantity':1}
+                }
+                ).then(()=>{
+                    resolve();
+                })
+            }else{
+                db.get().collection(collection.CART_COLLECTION)
+                .updateOne({user:ObjectID(userId)},
+                    {
+                        $push:{products:productObj}
+                        
+                    }
+                ).then((response)=>{
+                    resolve()
+                })
+            }
+        }else{
+            let cartObj={
+                user:ObjectID(userId),
+                products:[productObj]
+            }
+            db.get().collection(collection.CART_COLLECTION).insertOne(cartObj).then((response)=>{
+                resolve()
+            })
+        }
+    })
+  },
+  getCartProducts: (userId)=>{
+    console.log(userId);
+    return new Promise(async(resolve,reject)=>{
+      let cartProducts = await db.get().collection(collections.CART_COLLECTION).aggregate([
+        {
+          $match:{user:ObjectID(userId)}
+        },
+        {
+          $unwind:'$products'
+        },
+        {
+          $project:{
+            item:'$products.item',
+            quantity:'$products.quantity'
+          }
+        },
+        {
+          $lookup:{
+            from: collections.PRODUCT_COLLECTION,
+            localField: 'item',
+            foreignField: '_id',
+            as: 'product'
+          }
+        },
+        {
+          $project:{
+              item:1,
+              quantity:1,
+              product:{$arrayElemAt:['$product',0]}
+          }
+        }
+      ]).toArray()
+      console.log(cartProducts);
+      resolve(cartProducts)
+    })
+  }
 };

@@ -14,7 +14,7 @@ const userLogin = (req,res,next)=>{
 /* GET home page. */
 router.get("/", function (req, res, next) {
   productHelpers.getAllProducts().then((products)=>{
-    res.render("user/index",{user:req.session.user,products,admin:req.session.adminLogin});
+    res.render("user/index",{user:req.session.user,products});
   })
 });
 
@@ -71,29 +71,25 @@ router.get("/logout", function (req, res, next) {
 
 
 router.get("/shop",userLogin, function (req, res, next) {
-  res.render("user/shop");
+  res.render("user/shop",{user:req.session.user});
 });
 
 router.get("/cart",userLogin, function (req, res, next) {
-  res.render("user/cart");
+  userHelpers.getCartProducts(req.session.user._id).then((products)=>{
+    res.render("user/cart",{user:req.session.user,products});
+  })
 });
 
 router.get("/blog", function (req, res, next) {
-  productHelpers.getCount("company").then((data)=>{
-    console.log(data);
-  })
-  res.render("user/blog");
+  res.render("user/blog",{user:req.session.user});
 });
 
 router.get("/about", function (req, res, next) {
-  productHelpers.startsWith().then((data)=>{
-    console.log(data);
-  })
-  res.render("user/about");
+  res.render("user/about",{user:req.session.user});
 });
 
 router.get("/contact", function (req, res, next) {
-  res.render("user/contact");
+  res.render("user/contact",{user:req.session.user});
 });
 
 router.get("/product", userLogin, function (req, res, next) {
@@ -147,6 +143,14 @@ router.get('/delete-user',userLogin,(req,res)=>{
       }else{
         res.redirect('/')
       }
+    })
+  }
+})
+
+router.get('/add-to-cart',userLogin,(req,res,next)=>{
+  if(req.query.productId){
+    userHelpers.addToCart(req.query.productId,req.session.user._id).then(()=>{
+      res.redirect('/cart')
     })
   }
 })
