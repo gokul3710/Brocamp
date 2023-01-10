@@ -204,12 +204,24 @@ module.exports = {
                 $group:{
                     _id:null,
                     totalPrice:{$sum:{$multiply:['$quantity',{$convert:{input:'$product.cPrice',to:'int'}}]}},
-                    totalQuantity:{$sum:{$multiply:['$quantity',1]}}
+                    totalQuantity:{$sum:{$multiply:['$quantity',1]}},
                 }
             }
         ]).toArray()
         resolve(total[0])
     })
   },
+  addCoupon: (coupon,userId)=>{
+    console.log(coupon);
+    return new Promise((resolve,reject)=>{
+      db.get().collection(collections.CART_COLLECTION).updateOne({user:ObjectID(userId)},{
+        $set:{
+          coupon:coupon
+        }
+      }).then((response)=>{
+        resolve()
+      })
+    })
+  }
   
 };

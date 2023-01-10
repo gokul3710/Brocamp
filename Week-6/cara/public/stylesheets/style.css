@@ -1439,9 +1439,9 @@ table td {
     margin-bottom: 25px;
   }
 
-  #navbar li:last-of-type {
+  /* #navbar li:last-of-type {
     display: none;
-  }
+  } */
 
   #mobile {
     display: flex;
