@@ -1,0 +1,39 @@
+<ng-container class="pending" *ngIf="todos.length">
+    <h2 class="p-2 text-center text-white">Pending Todos</h2>
+
+    <ul class="list-group w-100" *ngFor="let todo of todos">
+        <li class="list-group-item d-flex justify-content-between w-100 mt-2">
+            <span>
+                <input type="checkbox" (change)="changeTodoStatus(todo)" [checked]="todo.isCompleted" required>
+            </span>
+            <span [ngClass]="{completedTodo : todo.isCompleted}">
+                {{todo.title | titlecase}}
+            </span>
+            <span [ngClass]="{completedTodo : todo.isCompleted}">
+                {{todo.date | date}}
+            </span>
+            <span>
+                <p (click)="deleteTodo(todo)">trash</p>
+            </span>
+        </li>
+    </ul>
+</ng-container>
+<ng-container *ngIf="deletedTodos.length">
+    <h2 class="p-2 text-center text-white">Completed Todos</h2>
+    <ul class="list-group w-100" *ngFor="let todo of deletedTodos">
+        <li class="list-group-item d-flex justify-content-between w-100">
+            <span>
+                <input type="checkbox" (change)="changeTodoStatus(todo)" [checked]="todo.isCompleted">
+            </span>
+            <span [ngClass]="{completedTodo : todo.isCompleted}">
+                {{todo.title | titlecase}}
+            </span>
+            <span [ngClass]="{completedTodo : todo.isCompleted}">
+                {{todo.date | date}}
+            </span>
+            <span>
+                <p>Done</p>
+            </span>
+        </li>
+    </ul>
+</ng-container>
