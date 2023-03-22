@@ -8,6 +8,12 @@ export default {
         const users: user[] = await userHelpers.allUsers()
         res.status(200).json(users);
     },
+
+    getUser: async(req: Request, res:Response)=>{
+        let user = await userHelpers.userById(req.body.id)
+        res.status(200).json(user)
+    },
+    
     postLogin: async (req:Request, res: Response) => {
         if(req.body){
             if(req.body.email != 'admin@admin.com'){

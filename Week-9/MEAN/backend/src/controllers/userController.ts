@@ -44,7 +44,9 @@ export default {
         })
     },
     postDelete: (req: Request, res: Response) => {
-        userHelpers.delete(req.body.userId).then((response) => {
+        console.log(req.body);
+        
+        userHelpers.delete(req.body.id).then((response) => {
             res.status(200).json(response)
         })
     },

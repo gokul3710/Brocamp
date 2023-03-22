@@ -8,6 +8,7 @@ import path from 'path'
 
 //routes
 import userRoutes from './api/user'
+import adminRoutes from './api/admin'
 
 //mongodb
 import {db} from './utils/connection'
@@ -61,6 +62,7 @@ db.connect((err:any)=>{
 })
 
 app.use("/", userRoutes);
+app.use("/", adminRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

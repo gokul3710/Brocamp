@@ -10,7 +10,7 @@ router.post('/api/user/signup' , userController.postSignup)
 
 router.post('/api/user/login' , userController.postLogin)
 
-router.delete('/api/user/delete', userController.postDelete)
+router.post('/api/user/delete', userController.postDelete)
 
 router.put('/api/user/update', userController.postEdit)
 

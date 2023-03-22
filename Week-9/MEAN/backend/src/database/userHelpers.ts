@@ -80,32 +80,53 @@ export default {
                 console.log(user);
                 console.log(userData);
                 
-
-                bcrypt.compare(userData.password, user.password).then(async (status) => {
-                    console.log(status);
-                    
-                    if (status) {
-                        let a  = await bcrypt.hash(userData.newPassword, 10);
-                        console.log(a);
-                        console.log(userData);
-                        db.get().collection(collections.USER_COLLECTION).updateOne({ _id: new ObjectId(user._id) }, {
-                            $set: {
-                                name: userData.name,
-                                phone: Number(userData.phone),
-                                email: userData.email,
-                                password: a,
-                                image: image
-                            }
-                        }).then((response) => {
-                            resolve({name: userData.name, phone: Number(userData.phone),email: userData.email,image:image,_id: user._id})
-                        })
-                    } else {
-                        resolve('Wrong Password')
-                    }
-                })
+                if(userData.password){
+                    bcrypt.compare(userData.password, user.password).then(async (status) => {
+                        console.log(status);
+                        
+                        if (status) {
+                            let a  = await bcrypt.hash(userData.newPassword, 10);
+                            console.log(a);
+                            console.log(userData);
+                            db.get().collection(collections.USER_COLLECTION).updateOne({ _id: new ObjectId(user._id) }, {
+                                $set: {
+                                    name: userData.name,
+                                    phone: Number(userData.phone),
+                                    email: userData.email,
+                                    password: a,
+                                    image: image
+                                }
+                            }).then((response) => {
+                                resolve({name: userData.name, phone: Number(userData.phone),email: userData.email,image:image,_id: user._id})
+                            })
+                        } else {
+                            resolve('Wrong Password')
+                        }
+                    })
+                }else{
+                    db.get().collection(collections.USER_COLLECTION).updateOne({ _id: new ObjectId(user._id) }, {
+                        $set: {
+                            name: userData.name,
+                            phone: Number(userData.phone),
+                            email: userData.email,
+                            image: image
+                        }
+                    }).then((response) => {
+                        resolve({name: userData.name, phone: Number(userData.phone),email: userData.email,image:image,_id: user._id})
+                    })
+                }
+                
             }
 
         })
     },
+    userById: (id: string)=>{
+        return new Promise(async (resolve,reject)=>{
+            let user = await db.get().collection(collections.USER_COLLECTION).findOne({ _id: new ObjectId(id) })
+            console.log(user);
+            
+            resolve(user)
+        })
+    }
 
 }
