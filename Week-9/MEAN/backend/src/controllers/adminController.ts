@@ -13,7 +13,7 @@ export default {
         let user = await userHelpers.userById(req.body.id)
         res.status(200).json(user)
     },
-    
+
     postLogin: async (req:Request, res: Response) => {
         if(req.body){
             if(req.body.email != 'admin@admin.com'){
@@ -26,6 +26,17 @@ export default {
 
             // const token = generateAdminToken()
 
+        }
+    },
+    getSearch: (req:Request, res:Response)=>{
+        console.log(req.query.searchKey);
+        
+        if(req.query.searchKey){
+            userHelpers.search(req.query.searchKey as string).then(
+                (users)=>{
+                    res.status(200).json(users)
+                }
+            )
         }
     }
 }

@@ -59,12 +59,6 @@ export default {
             }
         });
     },
-    search: (text: string) => {
-        return new Promise(async (resolve, reject) => {
-            let results = await db.get().collection(collections.USER_COLLECTION).find({ $text: { $search: text } }).toArray()
-            resolve(results)
-        })
-    },
     delete: (userId: string) => {
         return new Promise((resolve, reject) => {
             db.get().collection(collections.USER_COLLECTION).deleteOne({ _id: new ObjectId(userId) }).then((response) => {
@@ -91,7 +85,7 @@ export default {
                             db.get().collection(collections.USER_COLLECTION).updateOne({ _id: new ObjectId(user._id) }, {
                                 $set: {
                                     name: userData.name,
-                                    phone: Number(userData.phone),
+                                    phone: userData.phone,
                                     email: userData.email,
                                     password: a,
                                     image: image
@@ -126,6 +120,24 @@ export default {
             console.log(user);
             
             resolve(user)
+        })
+    },
+    search: (text: string)=>{
+        console.log(text);
+        
+        return new Promise(async(resolve,reject)=>{
+            let regex = new RegExp(text, "i");
+            let users = await db.get().collection(collections.USER_COLLECTION).find({
+                $or: [
+                    { name: { $regex: regex } },
+                    { email: { $regex: regex } },
+                    { address: { $regex: regex } },
+                    { mobile: { $regex: regex } }
+                ]
+            }).toArray();
+            console.log(users);
+            
+            resolve(users)
         })
     }
 

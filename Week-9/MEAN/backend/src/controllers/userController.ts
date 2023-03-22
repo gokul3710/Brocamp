@@ -25,6 +25,7 @@ export default {
             }
         });
     },
+    
     postSignup: (req: Request, res: Response) => {
         userHelpers.signup(req.body).then((response: { user?: user, status?: boolean, signupErr?: string }) => {
             if (response.signupErr) {
