@@ -1,0 +1,32 @@
+<nav [ngClass]="{'scrolled': isScrolled}">
+    <div class="nav-container container">
+        <a routerLink="''" class="logo"><img src="../../../assets/images/logo.png" alt=""></a>
+        <div class="navigation">
+            <ul class="permalinks">
+                <li [routerLink]="''" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" class="permalink"><i class="fa-solid fa-house mobile"></i><a>Home</a></li>
+                <li [routerLink]="'tv'" [routerLinkActive]="'active'" class="permalink"><i class="fa-solid fa-tv mobile"></i><a>TV Shows</a></li>
+                <li [routerLink]="'movies'" [routerLinkActive]="'active'" class="permalink"><i class="fa-solid fa-film mobile"></i><a>Movies</a></li>
+                <li [routerLink]="''" class="permalink"><i class="fa-solid fa-star mobile"></i><a>Popular</a></li>
+                <li (click)="handleLogout()" class="permalink mobile"><i class="fa-solid fa-right-from-bracket mobile"></i><a>Logout</a></li>
+                <li class="permalink not-mobile"><a>My List</a></li>
+                <li class="permalink not-mobile"><a>Browse by Languages</a></li>
+                <li style="color: aliceblue;">{{obs$ | async}}</li>
+            </ul>
+            <div class="buttons">
+                <div class="search-button">
+                    <form #form="ngForm" #searchForm   >
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input (input)="searchTextChanged()" #formInput name="formInput" [(ngModel)]="searchString" type="text" placeholder="Titles, people, genres">
+                    </form>
+                    <button (click)="formChange()" *ngIf="!formActive"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="notification-button not-mobile">
+                    <button><i class="fa-regular fa-bell"></i></button>
+                </div>
+                <div class="account-button not-mobile">
+                    <button (click)="handleLogout()"><img src="../../../assets/avatars/avatar1.png" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

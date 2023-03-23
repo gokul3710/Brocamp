@@ -1,0 +1,179 @@
+.movie-card {
+    padding: 0.4rem 0.2rem;
+    background: #141414;
+    transition: all 400ms none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    height: 8rem;
+}
+
+.movie-card img {
+    width: auto;
+    height: 100%;
+    border-radius: 0.2rem;
+    transition: transform 0.5s ease;
+}
+
+.layer{
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(rgba(0,0,0,0.3), #000);
+    border-radius: 0.5rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+    color: white;
+}
+
+.layer h3{
+    font-weight: 500;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.layer p{
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.layer span{
+    /* margin-top: 1rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.layer span p{
+    color: red;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.layer span a{
+    text-decoration: none;
+    font-size: 10px;
+    line-height: 30px;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.layer span a i{
+    color: red;
+}
+
+.movie-card:hover img{
+    transform: scale(1.1);
+    border-radius: 0.5rem;
+}
+
+.movie-card:hover .layer {
+    height: 100%;
+}
+
+@media screen and (max-width:599px) {
+    .custom{
+        width: 45vw;
+        height: auto;
+    }
+
+    .custom img{
+        width: 100%;
+        height: fit-content;
+    }
+
+    .custom .layer h3{
+        font-size: 0.8rem;
+    }
+
+    .custom .layer span p{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+.movie-card-hover {
+    top: 0;
+    position: absolute;
+    display: none;
+    border-radius: 6px;
+    background: #141414;
+    transition: 600ms;
+}
+
+.movie-card-hover img {
+    height: 10rem;
+    border: 6px 0 0 6px;
+}
+
+.movie-card-hover .card-data {
+    padding: 2rem 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.movie-card-hover .card-data .action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.movie-card-hover .card-data .action-buttons div {
+    border-radius: 50%;
+    border: 2px solid white;
+    padding: 0.3rem 0.5rem;
+}
+
+.movie-card-hover .card-data h5 {
+    color: white;
+    margin: 0 6px;
+    font-size: 1rem;
+}
+
+.movie-card-hover .card-data .data span {
+    color: white;
+    border: 1px solid white;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.movie-card-hover .card-data .genre span {
+    color: white;
+    font-size: 1rem;
+    margin-right: 6px;
+} */
+
+
+/* --gradient:  */
+

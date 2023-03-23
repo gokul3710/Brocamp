@@ -1,0 +1,81 @@
+<app-banner [movie]="popularMovies[6]"></app-banner>
+<div class="slider trending">
+    <h5>Trending Now <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of trendingMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Popular <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of popularMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Action <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of actionMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Top Rated <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of topRatedMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Adventure <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of adventureMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Animation <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of animationMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Comedy <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of comedyMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Documentary <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of documentaryMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Science Fiction <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of scienceFictionMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Thriller <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of thrillerMovies">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>

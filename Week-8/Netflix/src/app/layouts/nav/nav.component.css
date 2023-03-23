@@ -1,0 +1,158 @@
+nav{
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    transition: all 700ms ease;
+}
+
+.scrolled{
+    background: rgb(20, 20, 20);
+}
+
+.nav-container{
+    width: 92%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-container a img{
+    height: 1.5rem;
+}
+
+.navigation{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center ;
+}
+
+.navigation ul,
+.navigation .buttons{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navigation ul li{
+    display: grid;
+}
+
+.navigation ul li a{
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.navigation ul li.active a{
+    font-weight: 600;
+}
+
+.buttons i{
+    font-size: 1.2rem;
+}
+
+.account-button img{
+    border-radius: 4px;
+}
+
+.mobile{
+    display: none;
+}
+
+ul.permalinks li.mobile{
+    display: none;
+}
+
+.search-button{
+    display: flex;
+}
+
+form{
+    background-color: rgba(0, 0, 0, 0.689);
+    border: 1px solid white;
+    padding: 0.3rem 0.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    opacity: 0;
+}
+
+form input{
+    height: 1.5rem;
+    width: 0rem;
+    background-color: transparent;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0 5px;
+    font-weight: 400;
+    transition: width 300ms ease;
+} 
+
+
+/* img{
+    width: 100%;
+    display: block;
+} */
+
+
+@media screen and (max-width: 600px) {
+    .navigation ul{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        padding: 1rem 0 1rem 0;
+        background-color: #141414;
+        width: 100vw;
+        place-items: center;
+        box-shadow: 1rem 1rem   1rem 0.5rem rgba(255, 255, 255, 0.689);
+    }
+
+    .navigation ul li a,
+    .navigation ul li i{
+        color: rgb(195, 195, 195);
+    }
+
+    .navigation ul li.active a,
+    .navigation ul li.active i{
+        color: #fff;
+    }
+
+    .navigation ul li i{
+        font-size: 0.8rem;
+        margin: 0 auto;
+        display: flex;
+        margin-bottom: 5px;
+        justify-content: center;
+    }
+    
+    .navigation ul li a{
+        font-size: 0.5rem;
+    }
+
+    .not-mobile,
+    .navigation ul li.not-mobile{
+        display: none;
+    }
+
+
+    .mobile,
+    ul.permalinks li.mobile{
+        display: block;
+    }
+    
+    .navigation .buttons .search-button{
+        position: absolute;
+        right: 4%;
+    }
+    
+    nav{
+        position: absolute;
+        background: transparent;
+    }
+}

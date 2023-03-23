@@ -1,0 +1,13 @@
+<div class="movie-cards">
+    <div class="movie-card" [ngClass]="{'custom': size == 'custom'}">
+        <img class="card-img" [src]="link" alt="">
+        <div class="layer">
+            <h3>{{title}}</h3>
+            <!-- <p>Released On : {{movie.release_date || movie.first_air_date}}</p> -->
+            <span>
+                <p>{{getMatchPercentage(movie)}}% Match</p>
+                <a [routerLink]="getLink(movie)"><i class="fa-solid fa-play"></i></a>
+            </span>
+        </div>
+    </div>
+</div>

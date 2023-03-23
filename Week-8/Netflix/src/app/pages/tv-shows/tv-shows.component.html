@@ -1,0 +1,25 @@
+<app-banner [movie]="popularSeries[15]"></app-banner>
+<div class="slider trending">
+    <h5>Popular Now <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of popularSeries">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Top Rated <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of topRatedSeries">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>
+<div class="slider">
+    <h5>Airing Today <span>Explore All <i class="fa-solid fa-angle-right"></i></span></h5>
+    <div class="container">
+        <ng-container *ngFor="let movie of airingTodaySeries">
+            <app-card-single [movie]="movie"></app-card-single>
+        </ng-container>
+    </div>
+</div>

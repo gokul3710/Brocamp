@@ -1,0 +1,43 @@
+.search-container {
+    background: #141414;
+    padding-top: 7rem;
+    /* margin-top: 5rem; */
+}
+
+.search-container h5 {
+    color: white;
+    font-weight: 500;
+    font-size: 1.4rem;
+    padding-left: 4%;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.search-container span,
+.search-container span i {
+    color: #54b9c5;
+    font-size: 0.7rem;
+    transition: all 400ms ease;
+    opacity: 0;
+}
+
+.search-container h5:hover span,
+.search-container h5:hover span i {
+    opacity: 1;
+}
+
+.search-container .container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    padding: 0 4%;
+    /* margin-bottom: 2rem; */
+}
+
+@media screen and (max-width:599px) {
+
+    .search-container .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

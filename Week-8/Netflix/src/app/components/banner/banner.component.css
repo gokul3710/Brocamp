@@ -1,0 +1,125 @@
+.banner-container {
+    height: 110vh;
+    background-color: #141414;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+}
+
+.banner-shadow {
+    box-shadow: inset 0rem -20vh 4rem rgba(20, 20, 20, 1);
+}
+
+.left {
+    margin-left: 4%;
+    position: absolute;
+    width: 36%;
+    bottom: 0%;
+    display: grid;
+    gap: 1rem;
+}
+
+.banner-shadow .left{
+    bottom: 20%;
+}
+
+.left .banner-logo {
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.left p {
+    color: white;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.left .buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.left .buttons .btn {
+    padding: 0.7rem 2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    background: #6d6d6eb3;
+    font-size: 1.1rem;
+}
+
+
+.left .buttons .btn.play {
+    background: white;
+    color: black;
+}
+
+.left .buttons .btn i {
+    margin-right: 1rem;
+}
+
+.left .buttons .btn.play i {
+    color: black;
+}
+
+.mobile {
+    display: none;
+}
+
+@media screen and (max-width: 599px) {
+    .banner-container {
+        height: 50vh;
+        background-position: top;
+    }
+
+    .not-mobile {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .banner-container .left {
+        bottom: 54%;
+        width: fit-content;
+        gap: 5px;
+        height: fit-content;
+    }
+
+    .banner-shadow .left {
+        top: 25vh;
+        width: fit-content;
+        gap: 5px;
+        height: fit-content;
+    }
+
+    .banner-container .left .banner-logo {
+        font-size: 1.5rem;
+    }
+
+    .banner-container .left .buttons {
+        gap: 0.5rem;
+    }
+
+    .banner-container .left .btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.7rem;
+        border-radius: 0.5rem;
+    }
+
+    .banner-container .left .buttons a {
+        font-weight: 600;
+    }
+
+    .banner-container .left .btn i {
+        margin-right: 5px;
+    }
+
+    .banner-container .left .buttons .mobile {
+        border-radius: 50%;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+}

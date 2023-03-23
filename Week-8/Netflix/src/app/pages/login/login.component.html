@@ -1,0 +1,24 @@
+<section class="login">
+    <div class="logo">
+        <img src="../../../assets/images/logo.png" alt="" srcset="">
+    </div>
+    <div class="login-cover">
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Sign In</h1>
+                <form [formGroup]="user" (ngSubmit)="handleLogin()">
+                    <input formControlName='email' type="email" name="email" placeholder="Email Address">
+                    <input formControlName='password' type="password" name="password" placeholder="Password">
+                    <button type="submit">Sign In</button>
+                </form>
+                <div class="help">
+                    <a>Remember Me?</a>
+                    <a>Need help?</a>
+                </div>
+                <a>New to Netflix? <span>Sign up now.</span> </a>
+                <a class="last">This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</a>
+            </div>
+            
+        </div>
+    </div>
+</section>

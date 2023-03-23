@@ -1,0 +1,9 @@
+<app-banner [movie]="movie" [shadow]="false"></app-banner>
+<section class="team">
+    <h2>Cast</h2>
+    <div class="container team-container">
+        <ng-container *ngFor="let member of cast.cast">
+            <app-cast  *ngIf="member.profile_path" [member]="member"></app-cast>
+        </ng-container>
+    </div>
+</section>

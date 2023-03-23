@@ -1,0 +1,15 @@
+<section class="banner">
+    <div [style.background-image]="'url(' + link + ')'" class="banner-container" [ngClass]="{'banner-shadow': shadow}">
+        <div class="left">
+            <a class="banner-logo">{{title}}</a>
+            <p class="not-mobile">
+                {{movie ? movie.overview : 'Overview'}}
+            </p>
+            <div class="buttons">
+                <a class="play btn" [routerLink]="getLink(movie)"><i class="fa-solid fa-play"></i>Watch</a>
+                <a class="info btn not-mobile"><i class="fa-solid fa-info"></i>More Info</a>
+                <a class="info btn mobile"><i class="fa-solid fa-info"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
