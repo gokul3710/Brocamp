@@ -1,0 +1,27 @@
+<nav [ngClass]="{'scrolled': isScrolled}">
+    <div class="nav-container container">
+        <a routerLink="''" class="logo" style="color: red;font-weight: 900;">WEBAPP</a>
+        <div class="navigation">
+            <ul class="permalinks">
+                <li [routerLink]="''" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}" class="permalink"><i class="fa-solid fa-house mobile"></i><a>Home</a></li>
+                <li class="permalink"><i class="fa-solid fa-tv mobile"></i><a>Shop</a></li>
+                <li class="permalink"><i class="fa-solid fa-film mobile"></i><a>Blog</a></li>
+                <li class="permalink"><i class="fa-solid fa-star mobile"></i><a>Contact</a></li>
+                <!-- <li class="permalink mobile"><i class="fa-solid fa-right-from-bracket mobile"></i><a>Logout</a></li> -->
+                <!-- <li class="permalink not-mobile"><a>My List</a></li> -->
+                <!-- <li class="permalink not-mobile"><a>Browse by Languages</a></li> -->
+                <!-- <li style="color: aliceblue;">{{obs$ | async}}</li> -->
+            </ul>
+            <div class="buttons">
+                <div class="notification-button not-mobile">
+                    <button><i class="fa-regular fa-bell"></i></button>
+                </div>
+                <div *ngIf="isLoggedIn()" class="account-button not-mobile" style="display: flex;gap: 1rem;align-items: center;color: white;">
+                    <a [routerLink]="'/user'" style="display: flex;gap: 1rem;align-items: center;"><h3>Welcome {{user.name | uppercase}}</h3><button><img [src]="'http://localhost:3000/image/'+user.image" alt=""></button></a>
+                </div>
+                <a *ngIf="isLoggedIn()" (click)="logout()" >Logout</a>
+                <a *ngIf="!isLoggedIn()" (click)="login()" >Login</a>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,26 @@
+<section class="login">
+    <div class="login-cover">
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Sign In</h1>
+                <form [formGroup]="user" (ngSubmit)="handleLogin()">
+                    <div class="email">
+                        <input formControlName='email' type="email" name="email" placeholder="Email Address"
+                        [ngClass]="{'is-invalid': submitted && r['email'].errors}" >
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['required']" class="error">Must Enter Your Email</small>
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['email']" class="error">Enter A Valid Email</small>
+                    </div>
+                    <div class="password">
+                        <input formControlName='password' type="password" name="password" placeholder="Password"
+                        [ngClass]="{'is-invalid': submitted && r['password'].errors}" >
+                        <small *ngIf="r['password'].touched && r['password'].errors?.['required']" class="error">Must Enter A Password</small>
+                        <small *ngIf="r['password'].touched && r['password'].errors?.['minlength']" class="error">Password should contain 8 characters</small>
+                    </div>
+                    <button [ngClass]="{'invalid':this.user.touched && this.user.invalid}" type="submit">Sign In</button>
+                </form>
+                <a [routerLink]="'/signup'">Don't Have An Account? <span >Sign up now.</span> </a>
+                <a class="last">This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</a>
+            </div>
+        </div>
+    </div>
+</section>

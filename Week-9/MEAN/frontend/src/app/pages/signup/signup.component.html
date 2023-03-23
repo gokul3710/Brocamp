@@ -1,0 +1,44 @@
+<section class="login">
+    <div class="login-cover">
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Sign Up</h1>
+                <form [formGroup]="user" (ngSubmit)="handleSignup()">
+                    <div class="name">
+                        <input formControlName='name' type="text" name="name" placeholder="Enter Your Name"
+                        [ngClass]="{'is-invalid': submitted && r['name'].errors}" >
+                        <small *ngIf="r['name'].touched && r['name'].errors?.['required']" class="error">Must Enter Your Name</small>
+                    </div>
+                    <div class="email">
+                        <input formControlName='email' type="email" name="email" placeholder="Email Address"
+                        [ngClass]="{'is-invalid': submitted && r['email'].errors}" >
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['required']" class="error">Must Enter Your Email</small>
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['email']" class="error">Enter A Valid Email</small>
+                    </div>
+                    <div class="phone">
+                        <input formControlName='phone' type="tel" name="phone" placeholder="Enter Your Phone Number"
+                        [ngClass]="{'is-invalid': submitted && r['phone'].errors}" >
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['required']" class="error">Must Enter Your Phone</small>
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['minlength']" class="error">Enter a Valid Phone Number</small>
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['maxlength']" class="error">Enter a Valid Phone Number</small>
+                    </div>
+                    <div class="password">
+                        <input formControlName='password' type="password" name="password" placeholder="Password"
+                        [ngClass]="{'is-invalid': submitted && r['password'].errors}" >
+                        <small *ngIf="r['password'].touched && r['password'].errors?.['required']" class="error">Must Enter A Password</small>
+                        <small *ngIf="r['password'].touched && r['password'].errors?.['minlength']" class="error">Password should contain 8 characters</small>
+                    </div>
+                    <div class="confirmPassword">
+                        <input formControlName='confirmPassword' type="password" name="confirmPassword" placeholder="Confirm Your Password"
+                        [ngClass]="{'is-invalid': submitted && r['confirmPassword'].errors}" >
+                        <small *ngIf="r['confirmPassword'].touched && r['confirmPassword'].errors?.['required']" class="error">Enter Your Password Again</small>
+                        <small *ngIf="r['confirmPassword'].touched && r['confirmPassword'].errors?.['mustMatch']" class="error">Both Passwords Should Match</small>
+                    </div>
+                    <button [ngClass]="{'invalid':this.user.touched && this.user.invalid}" type="submit">Sign In</button>
+                </form>
+                <a [routerLink]="'/login'">Have an Account? <span>Login now.</span> </a>
+            </div>
+            
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<section class="login">
+    <div class="login-cover">
+        <div class="login-container">
+            <div class="login-form">
+                <h1>Edit Account</h1>
+                <form [formGroup]="user" (ngSubmit)="handleUpdate()">
+                    <div class="profile-image" style="padding-bottom: 3rem;" >
+                        <a (click)="onImgClicked()" >
+                            <img 
+                                [src]="'http://localhost:3000/image/' + userr.image"
+                                #profileImg alt="" style="width: 10rem;height: 10rem;border-radius:  50%;cursor:pointer;" id="userImgView"
+                            >
+                        </a>
+                        <input #imgInput type="file" name="image" class="form-control" (change)="onFileSelected($event)" id="userImgInput" hidden>
+                    </div>
+                    <div class="name">
+                        <input formControlName='name' type="text" name="name" placeholder="Enter Your Name"
+                        [ngClass]="{'is-invalid': submitted && r['name'].errors}" >
+                        <small *ngIf="r['name'].touched && r['name'].errors?.['required']" class="error">Must Enter Your Name</small>
+                    </div>
+                    <div class="email">
+                        <input hidden formControlName='email' type="email" name="email" placeholder="Email Address"
+                        [ngClass]="{'is-invalid': submitted && r['email'].errors}"  >
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['required']" class="error">Must Enter Your Email</small>
+                        <small *ngIf="r['email'].touched && r['email'].errors?.['email']" class="error">Enter A Valid Email</small>
+                    </div>
+                    <div class="phone">
+                        <input formControlName='phone' type="tel" name="phone" placeholder="Enter Your Phone Number"
+                        [ngClass]="{'is-invalid': submitted && r['phone'].errors}" >
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['required']" class="error">Must Enter Your Phone</small>
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['minlength']" class="error">Enter a Valid Phone Number</small>
+                        <small *ngIf="r['phone'].touched && r['phone'].errors?.['maxlength']" class="error">Enter a Valid Phone Number</small>
+                    </div>
+                    <button [ngClass]="{'invalid':this.user.touched && this.user.invalid}" type="submit">Update Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
